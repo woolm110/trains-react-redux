@@ -76,8 +76,8 @@ class PageHome extends Component {
           <div>
             <SelectBox defaultValue="WAT" stations={this.renderStationsList()} />
             <SelectBox defaultValue="QRB" stations={this.renderStationsList()} />
-          </div>
-          : <Loader />
+          </div> :
+          <Loader />
         }
       </div>
     );

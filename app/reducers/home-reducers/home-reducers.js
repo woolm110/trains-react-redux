@@ -1,4 +1,4 @@
-import actionNames from 'actions/action.constants';
+import actionNames from '../../actions/action.constants';
 
 /**
  * Reducer for updating the homepage
