@@ -10,13 +10,14 @@ const basePath = path.join(__dirname, 'app');
 const distPath = path.join(__dirname, 'dist');
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
   entry: {
     vendor: './app/vendor.js',
     app: './app/index.jsx'
   },
   output: {
     path: distPath,
+    publicPath: '/',
     filename: '[name].[chunkhash].js'
   },
   plugins: [
@@ -58,7 +59,12 @@ module.exports = {
         include: basePath,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'postcss-loader', 'sass-loader']
+          use: ['css-loader', 'postcss-loader', {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [basePath]
+            }
+          }]
         })
       },
       {
@@ -67,7 +73,12 @@ module.exports = {
         include: basePath,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader?modules', 'postcss-loader', 'sass-loader']
+          use: ['css-loader?modules', 'postcss-loader', {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [basePath]
+            }
+          }]
         })
       },
       {

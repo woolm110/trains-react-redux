@@ -1,5 +1,5 @@
 {
-  "name": "itv-ppv-player",
+  "name": "trains-react-redux",
   "version": "1.0.0",
   "description": "A ppv player for ITV",
   "main": "index.js",
@@ -13,13 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ostmodern/itv-ppv-player.git"
+    "url": "git+https://github.com/woolm110/trains-react-redux.git"
   },
-  "author": "Ostmodern",
+  "author": "woolm110",
   "bugs": {
-    "url": "https://github.com/ostmodern/itv-ppv-player/issues"
+    "url": "https://github.com/woolm110/trains-react-redux/issues"
   },
-  "homepage": "https://github.com/ostmodern/itv-ppv-player#readme",
+  "homepage": "https://github.com/woolm110/trains-react-redux#readme",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
