@@ -1,6 +1,5 @@
-import { push } from 'react-router-redux';
-import actionNames from 'actions/action.constants';
-import StationsFactory from 'shared/factories/stations-factory/stations-factory';
+import actionNames from '../action.constants';
+import StationsFactory from '../../shared/factories/stations-factory/stations-factory';
 
 /**
  * Action for receiving response from pagehome
@@ -33,7 +32,7 @@ export function fetchStations () {
     dispatch(requestStations());
 
     return StationsFactory.getStations()
-      .then(response => dispatch(receiveStations(response)))
+      .then(response => dispatch(receiveStations(response)));
   };
 }
 
