@@ -11,6 +11,7 @@ import _ from 'lodash';
 import * as homeActions from 'actions/home-actions/home-actions';
 import SelectBox from 'components/select-box/select-box';
 import Loader from 'components/loader/loader';
+import Timetable from 'components/timetable/timetable';
 
 const propTypes = {
   fetchStations: PropTypes.func.isRequired,
@@ -20,13 +21,27 @@ const propTypes = {
   home: PropTypes.shape({
     stations: PropTypes.obj,
     departureStation: PropTypes.string,
-    arrivalStation: PropTypes.string
-  }).isRequired,
-  timetable: PropTypes.shape({
-    departures: PropTypes.shape({
-      all: PropTypes.obj
-    })
+    arrivalStation: PropTypes.string,
+    timetable: PropTypes.array
   }).isRequired
+};
+
+const styles = {
+  button: {
+    flex: '1',
+    textAlign: 'center',
+    fontSize: '14px',
+    padding: '7px',
+    maxWidth: '100px',
+    margin: '5px 0',
+    background: 'white',
+    border: '1px',
+    borderRadius: '3px',
+    cursor: 'pointer'
+  },
+  alignCenter: {
+    textAlign: 'center'
+  }
 };
 
 const mapStateToProps = state => {
@@ -93,8 +108,7 @@ class PageHome extends Component {
    */
   renderStationsList () {
     return (
-      _.map(
-        _.sortBy(this.props.home.stations, 'name'),
+      _.sortBy(this.props.home.stations, 'name').map(
         train => <option value={train.station_code} key={train.station_code}>{train.name}</option>
       )
     );
@@ -106,7 +120,7 @@ class PageHome extends Component {
    */
   render () {
     return (
-      <div>
+      <div style={styles.alignCenter}>
         <div>
           { this.props.home.stations ?
             <div>
@@ -117,10 +131,10 @@ class PageHome extends Component {
           }
         </div>
         <div>
-          <button onClick={this.handleSubmit}>find trains</button>
+          <button style={styles.button} onClick={this.handleSubmit}>find trains</button>
         </div>
         <div>
-          { this.props.home.timetable && 'yay' }
+          { this.props.home.timetable && <Timetable trains={this.props.home.timetable} /> }
         </div>
       </div>
     );

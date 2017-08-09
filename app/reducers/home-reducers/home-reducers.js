@@ -32,7 +32,7 @@ export default function (state = {}, action) {
     case actionNames.RECEIVE_TIMETABLE:
       return Object.assign({}, state, {
         isFetchingTimetable: false,
-        timetable: action.timetable
+        timetable: action.timetable.departures.all
       });
     default:
       return state;
