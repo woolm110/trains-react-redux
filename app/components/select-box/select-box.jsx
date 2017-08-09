@@ -15,12 +15,13 @@ const styles = {
 
 const propTypes = {
   stations: PropTypes.array.isRequired,
-  defaultValue: PropTypes.string.isRequired
+  defaultValue: PropTypes.string.isRequired,
+  onTrainSelect: PropTypes.func.isRequired
 };
 
 const SelectBox = props => {
   return (
-    <select style={styles.select} defaultValue={props.defaultValue}>
+    <select style={styles.select} defaultValue={props.defaultValue} onChange={props.onTrainSelect}>
       {
         props.stations
       }

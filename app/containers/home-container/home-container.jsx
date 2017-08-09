@@ -14,8 +14,18 @@ import Loader from 'components/loader/loader';
 
 const propTypes = {
   fetchStations: PropTypes.func.isRequired,
+  setDeparture: PropTypes.func.isRequired,
+  setArrival: PropTypes.func.isRequired,
+  fetchTrainTimetable: PropTypes.func.isRequired,
   home: PropTypes.shape({
-    stations: PropTypes.obj
+    stations: PropTypes.obj,
+    departureStation: PropTypes.string,
+    arrivalStation: PropTypes.string
+  }).isRequired,
+  timetable: PropTypes.shape({
+    departures: PropTypes.shape({
+      all: PropTypes.obj
+    })
   }).isRequired
 };
 
@@ -50,6 +60,31 @@ class PageHome extends Component {
     super(props);
 
     this.props.fetchStations();
+    this.setDepartureStation = this.setDepartureStation.bind(this);
+    this.setArrivalStation = this.setArrivalStation.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  /**
+   * setDepartureStation
+   */
+  setDepartureStation (event) {
+    this.props.setDeparture(event.target.value);
+  }
+
+  /**
+   * setArrivalStation
+   */
+  setArrivalStation (event) {
+    this.props.setArrival(event.target.value);
+  }
+
+  /**
+   * handleSubmit
+   * fetch timetable on submit
+   */
+  handleSubmit () {
+    this.props.fetchTrainTimetable(this.props.home.departureStation, this.props.home.arrivalStation);
   }
 
   /**
@@ -72,13 +107,21 @@ class PageHome extends Component {
   render () {
     return (
       <div>
-        { this.props.home.stations ?
-          <div>
-            <SelectBox defaultValue="WAT" stations={this.renderStationsList()} />
-            <SelectBox defaultValue="QRB" stations={this.renderStationsList()} />
-          </div> :
-          <Loader />
-        }
+        <div>
+          { this.props.home.stations ?
+            <div>
+              <SelectBox defaultValue={this.props.home.departureStation} stations={this.renderStationsList()} onTrainSelect={this.setDepartureStation} />
+              <SelectBox defaultValue={this.props.home.arrivalStation} stations={this.renderStationsList()} onTrainSelect={this.setArrivalStation} />
+            </div> :
+            <Loader />
+          }
+        </div>
+        <div>
+          <button onClick={this.handleSubmit}>find trains</button>
+        </div>
+        <div>
+          { this.props.home.timetable && 'yay' }
+        </div>
       </div>
     );
   }

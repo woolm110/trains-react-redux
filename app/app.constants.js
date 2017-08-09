@@ -4,7 +4,9 @@ const appConstants = {
   minLat: 51.28,
   maxLat: 51.696,
   minLon: 0.489,
-  maxLon: 0.236
+  maxLon: 0.236,
+  departureStation: 'WAT',
+  arrivalStation: 'QRB'
 };
 
 export default appConstants;

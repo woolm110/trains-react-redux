@@ -13,8 +13,15 @@ import './index.global.scss';
 import rootReducer from 'reducers';
 import App from 'components/app/app';
 import HomeContainer from 'containers/home-container/home-container';
+import AppConstants from 'app.constants';
 
 const history = createBrowserHistory();
+const defaultState = {
+  home: {
+    departureStation: AppConstants.departureStation,
+    arrivalStation: AppConstants.arrivalStation
+  }
+};
 
 /**
  * @todo work out how to disable dev tools in production
@@ -22,6 +29,7 @@ const history = createBrowserHistory();
  */
 const store = createStore(
   rootReducer,
+  defaultState,
   composeWithDevTools(
     applyMiddleware(ReduxThunk, routerMiddleware(history))
   )
