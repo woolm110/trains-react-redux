@@ -13,7 +13,7 @@ module.exports = {
   devtool: 'source-map',
   entry: {
     vendor: './app/vendor.js',
-    app: './app/index.js'
+    app: './app/index.jsx'
   },
   output: {
     path: distPath,
@@ -30,7 +30,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Default Template',
-      template: './app/index.html',
+      template: './app/index.ejs',
       filename: 'index.html'
     }),
     new ExtractTextPlugin({
@@ -38,7 +38,11 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    modules: [
+      path.resolve(`${basePath}`),
+      path.resolve('node_modules/')
+    ]
   },
   module: {
     rules: [
@@ -49,12 +53,21 @@ module.exports = {
         include: basePath
       },
       {
-        test: /\.scss$/,
+        test: /\.global\.scss$/,
         exclude: /node_modules/,
         include: basePath,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: ['css-loader', 'postcss-loader', 'sass-loader']
+        })
+      },
+      {
+        test: /\.scss$/,
+        exclude: [/node_modules/, /\.global\.scss$/],
+        include: basePath,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader?modules', 'postcss-loader', 'sass-loader']
         })
       },
       {
