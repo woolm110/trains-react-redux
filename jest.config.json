@@ -1,0 +1,14 @@
+{
+  "verbose": true,
+  "bail": false,
+  "collectCoverageFrom": ["app/**/*.{js,jsx}", "!**/node_modules/**", "!dist/**", "!app/vendor.js", "!app/**/*.spec.js"],
+  "coverageDirectory": "tests/coverage/",
+  "coverageThreshold": {
+    "global": {
+      "branches": 80,
+      "functions": 80,
+      "lines": 80,
+      "statements": 80
+    }
+  }
+}

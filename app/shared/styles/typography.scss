@@ -1,0 +1,8 @@
+// declare global typography mixins here
+
+@import 'colours';
+
+@mixin main-header {
+  font-size: 34px;
+  color: $black;
+}
