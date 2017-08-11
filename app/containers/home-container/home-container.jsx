@@ -131,7 +131,7 @@ class PageHome extends Component {
           }
         </div>
         <div>
-          <button style={styles.button} onClick={this.handleSubmit}>find trains</button>
+          { this.props.home.isFetchingTimetable ? <Loader /> : <button style={styles.button} onClick={this.handleSubmit}>find trains</button> }
         </div>
         <div>
           { this.props.home.timetable && <Timetable trains={this.props.home.timetable} /> }
