@@ -31,13 +31,14 @@ const styles = {
     flex: '1',
     textAlign: 'center',
     fontSize: '14px',
-    padding: '7px',
-    maxWidth: '100px',
     margin: '5px 0',
-    background: 'white',
-    border: '1px',
-    borderRadius: '3px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    color: '#fff',
+    border: '2px solid #fff',
+    borderRadius: '4px',
+    background: 'transparent',
+    height: '40px',
+    padding: '0 12px'
   },
   alignCenter: {
     textAlign: 'center'
@@ -131,7 +132,7 @@ class PageHome extends Component {
           }
         </div>
         <div>
-          { this.props.home.isFetchingTimetable ? <Loader /> : <button style={styles.button} onClick={this.handleSubmit}>find trains</button> }
+          { this.props.home.isFetchingTimetable ? <Loader /> : <button style={styles.button} onClick={this.handleSubmit}>Find Trains</button> }
         </div>
         <div>
           { this.props.home.timetable && <Timetable trains={this.props.home.timetable} /> }
