@@ -1,7 +1,7 @@
 {
   "name": "trains-react-redux",
   "version": "1.0.0",
-  "description": "A ppv player for ITV",
+  "description": "A train timetable app",
   "main": "index.js",
   "scripts": {
     "test": "jest --config jest.config.json --watch",
@@ -67,7 +67,6 @@
     "history": "^4.6.3",
     "lodash": "^4.17.4",
     "normalize.css": "^7.0.0",
-    "postcode-validator": "^1.2.0",
     "postcss-loader": "^2.0.6",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -81,6 +80,5 @@
     "redux-form": "^7.0.3",
     "redux-mock-store": "^1.2.3",
     "redux-thunk": "^2.2.0",
-    "world-countries": "^1.8.1"
   }
 }
