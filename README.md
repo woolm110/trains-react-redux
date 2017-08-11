@@ -1,10 +1,5 @@
-# Ostmodern React Boilerplate
-All your initial front-end build needs in one place.
-
-## Usage
-
-- Fork this repo;
-- Run `npm install` to install node dependencies
+# Train timetable
+App to display train times from various stations served by South West trains
 
 ## Available npm commands
 
