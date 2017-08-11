@@ -9,7 +9,12 @@ const styles = {
     height: '30px',
     border: '1px',
     display: 'block',
-    margin: '0 auto 10px'
+    margin: '0 auto 10px',
+    color: '#fff',
+    border: '2px solid #fff',
+    borderRadius: '4px',
+    background: 'transparent',
+    height: '40px'
   }
 };
 
