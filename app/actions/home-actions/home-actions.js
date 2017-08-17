@@ -72,11 +72,11 @@ function setArrivalStation (station) {
  * @returns {function}
  */
 export function fetchStations () {
-  return dispatch => {
+  return async dispatch => {
     dispatch(requestStations());
 
-    return StationsFactory.getStations()
-      .then(response => dispatch(receiveStations(response)));
+    const response = await StationsFactory.getStations();
+    dispatch(receiveStations(response));
   };
 }
 
@@ -105,10 +105,10 @@ export function setArrival (arrivalStationCode) {
  * @returns {function}
  */
 export function fetchTrainTimetable (departureStation, arrivalStation) {
-  return dispatch => {
+  return async dispatch => {
     dispatch(requestTimetable());
 
-    return StationsFactory.getTrainTimetable(departureStation, arrivalStation)
-      .then(response => dispatch(receiveTimetable(response)));
+    const response = await StationsFactory.getTrainTimetable(departureStation, arrivalStation);
+    dispatch(receiveTimetable(response));
   };
 }

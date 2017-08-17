@@ -22,7 +22,8 @@ const propTypes = {
     stations: PropTypes.obj,
     departureStation: PropTypes.string,
     arrivalStation: PropTypes.string,
-    timetable: PropTypes.array
+    timetable: PropTypes.array,
+    isFetchingTimetable: PropTypes.bool
   }).isRequired
 };
 
@@ -132,7 +133,9 @@ class PageHome extends Component {
           }
         </div>
         <div>
-          { this.props.home.isFetchingTimetable ? <Loader /> : <button style={styles.button} onClick={this.handleSubmit}>Find Trains</button> }
+          <button style={styles.button} onClick={this.handleSubmit}>
+            { this.props.home.isFetchingTimetable ? 'Loading' : 'Find Trains' }
+          </button>
         </div>
         <div>
           { this.props.home.timetable && <Timetable trains={this.props.home.timetable} /> }
