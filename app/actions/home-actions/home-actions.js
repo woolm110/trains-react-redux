@@ -75,8 +75,8 @@ export function fetchStations () {
   return async dispatch => {
     dispatch(requestStations());
 
-    const response = await StationsFactory.getStations();
-    dispatch(receiveStations(response));
+    const data = await StationsFactory.getStations();
+    dispatch(receiveStations(data));
   };
 }
 
@@ -108,7 +108,7 @@ export function fetchTrainTimetable (departureStation, arrivalStation) {
   return async dispatch => {
     dispatch(requestTimetable());
 
-    const response = await StationsFactory.getTrainTimetable(departureStation, arrivalStation);
-    dispatch(receiveTimetable(response));
+    const data = await StationsFactory.getTrainTimetable(departureStation, arrivalStation);
+    dispatch(receiveTimetable(data));
   };
 }
